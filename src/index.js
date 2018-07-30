@@ -24,10 +24,10 @@ class App extends React.Component {
                 'isDone': false
             }]
         };
-    }
+   }
 
-    handleClick(id) {
-        const todoList = [...this.state.todoList];
+    handleStatusChange = (id) => {
+        const todoList = this.state.todoList;
         const task = todoList.find(task => task.id === id);
         if (task) {
             task.isDone = !task.isDone;
@@ -46,12 +46,10 @@ class App extends React.Component {
                     />
                 </div>
                 <div className="undone-list">
-                    <div>Undone</div>
-                    <ToDoList onClick={(id) => this.handleClick(id)} tasks={this.state.todoList.filter(toDo => !toDo.isDone)}/>
+                    <ToDoList label="undone" onStatusChange={this.handleStatusChange} tasks={this.state.todoList.filter(toDo => !toDo.isDone)}/>
                 </div>
                 <div className="done-list">
-                    <div>Done</div>
-                    <ToDoList onClick={(id) => this.handleClick(id)} tasks={this.state.todoList.filter(toDo => toDo.isDone)}/>
+                    <ToDoList label="done" onStatusChange={this.handleStatusChange} tasks={this.state.todoList.filter(toDo => toDo.isDone)}/>
                 </div>
             </div>
         )

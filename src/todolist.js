@@ -1,13 +1,22 @@
 import React from 'react';
 import Task from './task';
 
-export default (props) => 
+const TodoList = ({label, tasks, onStatusChange}) => 
     <React.Fragment>
-        {props.tasks.map((task) => 
+        <h3>{label}</h3>
+        {tasks.map((task) => 
             <Task 
                 key={task.id}
                 task={task}
-                onClick={() => props.onClick(task.id)}
+                onStatusChange={onStatusChange}
             />
         )}
     </React.Fragment>
+;
+
+// TodoList.propTypes = {
+//     tasks
+// }
+
+
+export default TodoList;
