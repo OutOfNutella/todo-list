@@ -1,0 +1,20 @@
+.undone-list, .done-list {
+    border: 1px solid black;
+    margin: 40px;
+}
+
+.stats {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.stat .count {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: grey;
+    text-align: center;
+    color: white;
+    display: inline-block;
+}
