@@ -36,20 +36,22 @@ class App extends React.Component {
     }
 
     render() {
+        const doneTasks = this.state.todoList.filter(toDo => toDo.isDone),
+              undoneTasks = this.state.todoList.filter(toDo => !toDo.isDone);
         return (
             <div>
                 <div>Tasks</div>
                 <div className="stats">
                     <Stats 
-                        countDone={this.state.todoList.filter(toDo => toDo.isDone).length}
-                        countUnDone={this.state.todoList.filter(toDo => !toDo.isDone).length}
+                        countDone={doneTasks.length}
+                        countUnDone={undoneTasks.length}
                     />
                 </div>
                 <div className="undone-list">
-                    <ToDoList label="undone" onStatusChange={this.handleStatusChange} tasks={this.state.todoList.filter(toDo => !toDo.isDone)}/>
+                    <ToDoList label="undone" onStatusChange={this.handleStatusChange} tasks={doneTasks}/>
                 </div>
                 <div className="done-list">
-                    <ToDoList label="done" onStatusChange={this.handleStatusChange} tasks={this.state.todoList.filter(toDo => toDo.isDone)}/>
+                    <ToDoList label="done" onStatusChange={this.handleStatusChange} tasks={undoneTasks}/>
                 </div>
             </div>
         )
